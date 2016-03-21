@@ -13,7 +13,7 @@ class UserInfo(forms.Form):
         ('1',u'超级用户')
     )
     name = forms.CharField(
-                           error_messages={'required':u'用户名不能为空'},
+                           error_messages={'required':u'用户名不能为空','invalid': u'yongh'},
                            widget=forms.TextInput(attrs={'class':'form-control','placeholder':u'用户名'})
                            )
     passwd = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
