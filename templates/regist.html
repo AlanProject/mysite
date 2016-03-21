@@ -2,13 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>新用户注册</title>
 </head>
 <body>
     <div>
         <h1>用注册</h1>
-        <form action="/login/">
-
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                {% for item in form %}
+                    <tr>
+                        <td>{{ item.label_tag }}</td>
+                        <td>{{ item }}</td>
+                        <td>{{ item.error }}</td>
+                    </tr>
+                {% endfor %}
+                <input type="submit" value="提交">
+            </table>
         </form>
     </div>
 </body>

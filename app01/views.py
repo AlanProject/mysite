@@ -2,11 +2,22 @@
 from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 
 from app01 import models
+from forms import UserInfo
 # Create your views here.
 def index(request):
+
     return render(request,'index.html',)
 def regist(request):
-    return render(request,'regist.html',)
+    if request.method == 'POST':
+        form = UserInfo(request.POST)
+        if form.is_valid():
+            data = form.clean()
+            name = data.get('name')
+            pwd = data.get('passwd')
+            c = data.get('user_choice')
+            print data
+            return HttpResponse(c)
+    return render(request,'regist.html',{'form':UserInfo,})
 
 # 登陆处理函数
 def login(request):
