@@ -5,18 +5,15 @@ from app01 import models
 from forms import UserInfo
 # Create your views here.
 def index(request):
-
     return render(request,'index.html',)
 def regist(request):
     if request.method == 'POST':
         form = UserInfo(request.POST)
         if form.is_valid():
-            data = form.clean()
-            name = data.get('name')
-            pwd = data.get('passwd')
-            c = data.get('user_choice')
-            print data
-            return HttpResponse(c)
+            return render(request,'index.html')
+        else:
+            error = form.errors
+            return render(request,'regist.html',{'form':UserInfo,'errors':error})
     return render(request,'regist.html',{'form':UserInfo,})
 
 # 登陆处理函数
