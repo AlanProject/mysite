@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 from django.conf.urls import url
-import views
+from app01.views import account
 urlpatterns = [
-    url(r'^login/', views.login),
-    url(r'^index/', views.index),
-    url(r'^regist/', views.regist),
+    url(r'^login/', account.login),
+    url(r'^index/', account.index),
+    url(r'^regist/', account.regist),
     # url(r'^test/(\d+)/(\d+)$',views.test),
-    url(r'^home/',views.home),
-    url(r'^logout/',views.logout),
-    url(r'^$',views.index),
+    url(r'^home/', account.home),
+    url(r'^logout/', account.logout),
+    url(r'^$', account.index),
     ]

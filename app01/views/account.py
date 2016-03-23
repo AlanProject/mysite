@@ -2,19 +2,19 @@
 from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 
 from app01 import models
-from forms import UserInfo
+from app01.forms import UserInfo
 # Create your views here.
 def index(request):
-    return render(request,'index.html',)
+    return render(request, 'index.html',)
 def regist(request):
     if request.method == 'POST':
         form = UserInfo(request.POST)
         if form.is_valid():
-            return render(request,'index.html')
+            return render(request, 'index.html')
         else:
             error = form.errors
-            return render(request,'regist.html',{'form':UserInfo,'errors':error})
-    return render(request,'regist.html',{'form':UserInfo,})
+            return render(request, 'regist.html',{'form':UserInfo,'errors':error})
+    return render(request, 'regist.html',{'form':UserInfo,})
 
 # 登陆处理函数
 def login(request):
